@@ -57,7 +57,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Add fade-in class to elements and observe them
 document.addEventListener('DOMContentLoaded', () => {
-    const elementsToAnimate = document.querySelectorAll('.service-card, .portfolio-item, .about-content, .contact-content');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .portfolio-item, .about-content, .contact-content, .blog-card');
     elementsToAnimate.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
@@ -147,7 +147,7 @@ window.addEventListener('scroll', () => {
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -156,11 +156,15 @@ window.addEventListener('scroll', () => {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+        const href = link.getAttribute('href');
+        // Only manage active state for hash links; leave page links (e.g. blog.html) unchanged
+        if (href && href.startsWith('#')) {
+            link.classList.remove('active');
+            if (href === `#${current}`) {
+                link.classList.add('active');
+            }
         }
     });
 });
@@ -238,12 +242,27 @@ document.addEventListener('DOMContentLoaded', () => {
 // Service card hover effects
 document.addEventListener('DOMContentLoaded', () => {
     const serviceCards = document.querySelectorAll('.service-card');
-    
+
     serviceCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
         });
-        
+
+        card.addEventListener('mouseleave', () => {
+            card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+        });
+    });
+});
+
+// Blog card hover effects (consistent with service and portfolio cards)
+document.addEventListener('DOMContentLoaded', () => {
+    const blogCards = document.querySelectorAll('.blog-card');
+
+    blogCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+        });
+
         card.addEventListener('mouseleave', () => {
             card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
         });
