@@ -181,11 +181,11 @@ body {
 }
 
 .hero-profile-image {
-    width: 320px;
-    height: 320px;
+    width: 213px;
+    height: 213px;
     border-radius: 50%;
     border: 6px solid #2563eb;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
     image-rendering: crisp-edges;
@@ -193,6 +193,7 @@ body {
     backface-visibility: hidden;
     filter: brightness(1.05) contrast(1.1) saturate(1.1);
     transition: transform 0.3s ease;
+    background: white;
 }
 
 .hero-profile-image:hover {
@@ -549,8 +550,8 @@ section {
     }
 
     .hero-profile-image {
-        width: 250px;
-        height: 250px;
+        width: 167px;
+        height: 167px;
         border: 5px solid #2563eb;
     }
 
@@ -610,8 +611,8 @@ section {
     }
 
     .hero-profile-image {
-        width: 200px;
-        height: 200px;
+        width: 133px;
+        height: 133px;
         border: 4px solid #2563eb;
     }
 }
